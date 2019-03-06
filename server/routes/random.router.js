@@ -1,8 +1,8 @@
 require('dotenv').config();
+const axios = require('axios');
 
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
 
 router.get('/', (req, res) => {
     // Make a `GET` request to Giphy
@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
         url: `http://api.giphy.com/v1/gifs/random`,
         params: {
             key: process.env.GIPHY_API_KEY,
+            limit: 10,
         }
     }).then( response => {
         console.log('response', response.data);
